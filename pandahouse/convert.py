@@ -10,19 +10,29 @@ from .utils import decode_escapes, decode_array
 
 MAPPING = {'object': 'String',
            'uint64': 'UInt64',
+           'UInt64': 'UInt64',
            'uint32': 'UInt32',
+           'UInt32': 'UInt32',
            'uint16': 'UInt16',
+           'UInt16': 'UInt16',
            'uint8': 'UInt8',
+           'UInt8': 'UInt8',
            'float64': 'Float64',
+           'Float64': 'Float64',
            'float32': 'Float32',
+           'Float32': 'Float32',
            'int64': 'Int64',
+           'Int64': 'Int64',
            'int32': 'Int32',
+           'Int32': 'Int32',
            'int16': 'Int16',
+           'Int16': 'Int16',
            'int8': 'Int8',
+           'Int8': 'Int8',
            'datetime64[D]': 'Date',
            'datetime64[ns]': 'DateTime'}
 
-PD2CH = keymap(np.dtype, MAPPING)
+PD2CH = keymap(pd.api.types.pandas_dtype, MAPPING)
 CH2PD = itemmap(reversed, MAPPING)
 CH2PD['Null'] = 'object'
 CH2PD['Nothing'] = 'object'
