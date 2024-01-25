@@ -60,8 +60,7 @@ def normalize(df, index=True):
 
 
 def to_csv(df):
-    data = df.to_csv(header=False, index=False, encoding='utf-8',
-                     quoting=csv.QUOTE_NONNUMERIC, escapechar='\\')
+    data = df.to_csv(header=False, index=False, encoding='utf-8', escapechar='\\')
     if PY3:
         return data.encode('utf-8')
     else:
