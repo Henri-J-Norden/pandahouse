@@ -84,9 +84,12 @@ def to_dataframe(lines, **kwargs):
         else:
             dtypes[name] = dtype
 
+    if "na_values" not in kwargs:
+        kwargs["na_values"] = ["\\N"]
+
     return pd.read_csv(lines, sep='\t', header=None, names=names, dtype=dtypes,
                        parse_dates=parse_dates, converters=converters,
-                       na_values=set(), keep_default_na=False, **kwargs)
+                       keep_default_na=False, **kwargs)
 
 
 def partition(df, chunksize=1000):
